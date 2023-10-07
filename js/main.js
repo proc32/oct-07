@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById('newsletterPopup').style.display = 'block';
             isShown = true;
         }
-    }, 15000); //15 seconds
+    }, 10000); 
 
     document.addEventListener('click', function(event) {
         if (event.target.matches('.popup-close')) {
