@@ -1814,10 +1814,10 @@
 
         });
     </script>
-    <div id="newsletterPopup" class="popup">
+<div id="newsletterPopup" class="popup">
     <div class="popup-content">
         <span class="popup-close" onclick="closeNewsletterPopup()">&times;</span>
-        <p>Message from Mohammed Omer: </p>
+        <p>Message from Mohammed Omer:</p>
         <h4>Catch me on Instagram</h4>
         <a href="https://www.instagram.com/_mromer_/" class="popup-link">Follow Up!</a>
     </div>
@@ -1833,18 +1833,6 @@
 
     function closeNewsletterPopup() {
         document.getElementById('newsletterPopup').style.display = 'none';
-    }
-
-    // Check if the device is not a mobile device
-    function isDesktop() {
-        return !(navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i));
-    }
-
-    // Reload the page every few seconds only for desktop devices
-    if (isDesktop()) {
-        setTimeout(function() {
-            location.reload();
-        }, 2000);  // Reloads every 2 seconds. Adjust the time as per your requirement.
     }
 
     // Initially show popup
