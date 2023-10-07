@@ -1815,59 +1815,42 @@
         });
     </script>
     <div id="newsletterPopup" class="popup">
-        <div class="popup-content">
-            <span class="popup-close" onclick="closeNewsletterPopup()">&times;</span>
-            <p>Message from Mohammed Omer:</p>
-            <h4>Catch me on Instagram</h4>
-            <a href="https://www.instagram.com/_mromer_/" class="popup-link">Follow Up!</a>
-        </div>
+    <div class="popup-content">
+        <span class="popup-close" onclick="closeNewsletterPopup()">&times;</span>
+        <p>Message from Mohammed Omer: </p>
+        <h4>Catch me on Instagram</h4>
+        <a href="https://www.instagram.com/_mromer_/" class="popup-link">Follow Up!</a>
     </div>
+</div>
 
-
-    <script>
-        function showPopup() {
+<script>
+    function showPopup() {
+        if (!localStorage.getItem('popupShown')) {
             document.getElementById('newsletterPopup').style.display = 'block';
+            localStorage.setItem('popupShown', 'yes');
         }
+    }
 
-        function closeNewsletterPopup() {
-            document.getElementById('newsletterPopup').style.display = 'none';
-        }
+    function closeNewsletterPopup() {
+        document.getElementById('newsletterPopup').style.display = 'none';
+    }
 
-        // After 10 seconds (10000 milliseconds), the showPopup function will be called
-        setTimeout(showPopup, 25000);
-    </script>
-    <script>
-        function submitForm(event) {
-            event.preventDefault();
+    // Check if the device is not a mobile device
+    function isDesktop() {
+        return !(navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i));
+    }
 
-            // Fetching the form and the URL
-            let form = document.getElementById("newsletterForm");
-            let url = form.action;
+    // Reload the page every few seconds only for desktop devices
+    if (isDesktop()) {
+        setTimeout(function() {
+            location.reload();
+        }, 2000);  // Reloads every 2 seconds. Adjust the time as per your requirement.
+    }
 
-            // Using Fetch API to make a POST request
-            fetch(url, {
-                method: "POST",
-                body: new FormData(form),
-                headers: {
-                    "Accept": "application/json"
-                }
-            }).then(response => {
-                if (response.ok) {
-                    // If submission is successful, display a success message
-                    form.reset();
-                    alert("Subscription successful.");
-                } else {
-                    // If an error occurs, log it to the console
-                    console.error("Form submission failed!", response);
-                    alert("Oops! There was a problem with the submission.");
-                }
-            }).catch(error => {
-                // If there's an error (like no internet connection), log it to the console
-                console.error("Form submission error:", error);
-                alert("Oops! There was an error with the submission. Please try again.");
-            });
-        }
-    </script>
+    // Initially show popup
+    showPopup();
+</script>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
 
