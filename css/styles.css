@@ -359,7 +359,6 @@ img {
     display: flex;
     flex-direction: column;
     text-align: center;
-
     align-items: center;
     font-size: var(--small-font-size);
     color: var(--title-color);
@@ -2018,4 +2017,32 @@ html {
 
 .newsletter-popup button:hover {
     background-color: #0056b3;
+}
+
+.courses {
+    padding: 4rem 0;
+}
+
+.course {
+    /* Light gray background */
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.course__title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.course__source {
+    font-style: italic;
+    color: var(--first-color);
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.course__description {
+    color: var(--title-color);
 }
