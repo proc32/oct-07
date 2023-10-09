@@ -358,6 +358,8 @@ img {
 .nav__link {
     display: flex;
     flex-direction: column;
+    text-align: center;
+
     align-items: center;
     font-size: var(--small-font-size);
     color: var(--title-color);
