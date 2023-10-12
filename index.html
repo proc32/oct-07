@@ -193,18 +193,16 @@
 
                     <div class="home__data">
                         <h1 class="home__title">
-                            Hi, <span class="home__colored-text">Omer</span> here.
-                            <span class="home__colored-text"></span>
+                            Hi, <span class="home__colored-text">Omer</span> here.<span class="home__colored-text"></span>
                         </h1>
                         <h2 class="home__subtitle"><span id="multiple-text"></span></h2>
                         <p class="home__description">
-                            <span class="home__colored-text">" Prodigious</span> yet still <span class="home__colored-text">learning. "</span>
+                            " <span class="home__colored-text">I</span> Build <span class="home__colored-text"> AI/ML Systems </span>Sometimes. "
                         </p>
-                        <a href="index.html#contact" class="home__button button button--flex" id="dynamicButton">
-                            GET IN TOUCH <i class="uil uil-envelope-alt button__icon"></i>
-                        </a>
+                        <a href="index.html#contact" class="home__button button button--flex">
+                                GET IN TOUCH <i class="uil uil-envelope-alt button__icon"></i>
+                            </a>
                     </div>
-
                 </div>
 
                 <div class="home__scroll">
@@ -1488,47 +1486,7 @@
     <script src="js/b58a420f20.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script>
-        const phrases = [
-            '“ And Allah would not punish them while they seek forgiveness.” [Quran 8:33]',
-            '“ My mercy encompasses all things.” [Quran 7:156]',
-            '“ The truth is from your Lord, so do not be among the doubters.” [Quran 3:60]',
-            '“ Allah does not burden a soul beyond that it can bear.” [Quran 2:286]',
-            '“ Do what is beautiful. Allah loves those who do what is beautiful.” [Quran 2:195]',
-            '“ Indeed, I am near.” [Quran 2:186]',
-            '" He knows what is in every heart.” [Quran 67:13]',
-            '" People who repent and do good deeds truly return to God.” [Quran 25:71]',
-            '" And speak to people good words.” [Quran 2:83]',
-
-
-        ];
-
-        let currentPhraseIndex = 0;
-        const descriptionElement = document.querySelector('.home__description');
-
-        function typePhrase(phrase) {
-            let charIndex = 0;
-
-            function typeChar() {
-                if (charIndex < phrase.length) {
-                    descriptionElement.innerHTML = phrase.substring(0, charIndex + 1) + '<span class="typing-cursor"></span>';
-                    charIndex++;
-                    setTimeout(typeChar, 100); // typing speed
-                } else {
-                    setTimeout(nextPhrase, 3000);
-                }
-            }
-
-            typeChar();
-        }
-
-        function nextPhrase() {
-            currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length; // loop back to the start if we're at the end
-            typePhrase(phrases[currentPhraseIndex]);
-        }
-
-        nextPhrase(); // start typing the first phrase
-    </script>
+    
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
