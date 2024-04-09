@@ -126,6 +126,9 @@ body {
     /* Just in case you still want to have a fallback font */
 }
 
+
+/* Dark mode cover */
+
 #dark-mode-cover {
     position: fixed;
     top: 0;
@@ -152,23 +155,8 @@ body {
     }
 }
 
-body.dark-theme #dark-mode-cover {
-    animation: fadeEffectReverse 0.5s forwards;
-}
 
-@keyframes fadeEffectReverse {
-    from {
-        transform: scale(4);
-        opacity: 0;
-    }
-    to {
-        transform: scale(0);
-        opacity: 1;
-    }
-}
-
-
-/*========== Dark Theme Colors ==========*/
+/* Dark theme colors */
 
 body.dark-theme {
     /* HSL color mode */
@@ -183,7 +171,7 @@ body.dark-theme {
 }
 
 
-/*========== Navigation Buttons Styling ==========*/
+/* Navigation buttons styling */
 
 .nav__btns {
     display: flex;
@@ -191,18 +179,17 @@ body.dark-theme {
 }
 
 
-/*========== Dark/Light Toggle Button ==========*/
+/* Dark/light toggle button */
 
 .change-theme {
     font-size: 1.25rem;
     color: var(--title-color);
     margin-right: var(--mb-1);
     cursor: pointer;
-    /* This transition is already in place for the button */
 }
 
 
-/* Hover effect for Dark/Light Toggle Button */
+/* Hover effect for dark/light toggle button */
 
 .change-theme:hover {
     color: var(--first-color);
@@ -1722,6 +1709,58 @@ html {
 }
 
 
+/* Position the pagination dots below the testimonial content */
+
+.testimonials .swiper-pagination {
+    bottom: 10px;
+}
+
+
+/* By default (for desktop), hide the section and nav item */
+
+#case-studies,
+#case-studies-nav {
+    display: none;
+}
+
+
+/* Show the section and nav item for screens up to 768px */
+
+@media (max-width: 768px) {
+    #case-studies,
+    #case-studies-nav {
+        display: block;
+    }
+}
+
+.case-study {
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border: 1px solid #e0e0e0;
+    /* A light grey border */
+    border-radius: 8px;
+}
+
+.case-study__title {
+    font-size: 1.2rem;
+    color: var(--title-color);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.case-study h4 {
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    color: var(--first-color);
+    /* Assuming this is your primary color */
+}
+
+.case-study p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+
 /* Base container styling */
 
 .newsletter__container {
@@ -2019,6 +2058,69 @@ html {
     background-color: #0056b3;
 }
 
+.faq__container {
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.faq__item {
+    margin-bottom: 1.5rem;
+}
+
+.faq__question {
+    font-weight: var(--font-semi-bold);
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+.faq__answer {
+    display: none;
+    /* Initial state is hidden */
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
+}
+
+.faq__question:hover,
+.faq__question:active {
+    color: var(--first-color);
+}
+
+.faq__question,
+.faq__answer {
+    padding: 1rem;
+    margin: 0.5rem 0;
+}
+
+@media (max-width: 600px) {
+    .faq__question,
+    .faq__answer {
+        font-size: 0.9rem;
+        padding: 0.8rem;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+    .faq__question,
+    .faq__answer {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 901px) {
+    .faq__question,
+    .faq__answer {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .faq__question.active {
+        color: var(--first-color);
+    }
+}
+
 .courses {
     padding: 4rem 0;
 }
@@ -2036,13 +2138,60 @@ html {
     margin-bottom: 1rem;
 }
 
-.course__source {
+.course__source a {
     font-style: italic;
     color: var(--first-color);
-    margin-bottom: 1.5rem;
-    display: block;
+    text-decoration: none;
+}
+
+.course__source a:hover {
+    text-decoration: underline;
 }
 
 .course__description {
     color: var(--title-color);
+}
+
+
+/*==================== PARTNERS ====================*/
+
+.partners__container {
+    margin-top: 2rem;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.partners__container a {
+    display: flex;
+    align-items: center;
+}
+
+.partners__container img {
+    width: 264px;
+    /* Increase the width by 10% for bigger images */
+    height: 132px;
+    /* Keep the height proportional to the width */
+    object-fit: contain;
+    /* Ensure the image covers the entire container */
+    margin: 10px;
+    /* Adjust the margin for spacing between images */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    /* Add a smooth transition for hover effect */
+}
+
+.partners__container img:hover {
+    transform: scale(1.1);
+    /* Add a slight scale effect on hover */
+    opacity: 0.8;
+    /* Adjust the opacity for hover effect */
+}
+
+@media (min-width: 768px) {
+    .partners__container {
+        flex-direction: column;
+        align-items: center;
+    }
 }

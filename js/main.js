@@ -49,14 +49,36 @@ const themeButton = document.getElementById("theme-button"),
     selectedIcon = localStorage.getItem("selected-icon"),
     getCurrentTheme = () => document.body.classList.contains(darkTheme) ? "dark" : "light",
     getCurrentIcon = () => themeButton.classList.contains("uil-sun") ? "uil-moon" : "uil-sun";
-selectedTheme && (document.body.classList["dark" === selectedTheme ? "add" : "remove"](darkTheme), themeButton.classList["uil-moon" === selectedIcon ? "add" : "remove"]("uil-sun")), themeButton.addEventListener("click", (() => { document.body.classList.toggle(darkTheme), themeButton.classList.toggle("uil-sun"), localStorage.setItem("selected-theme", document.body.classList.contains(darkTheme) ? "dark" : "light"), localStorage.setItem("selected-icon", themeButton.classList.contains("uil-sun") ? "uil-moon" : "uil-sun") }));
+
+selectedTheme && (document.body.classList["dark" === selectedTheme ? "add" : "remove"](darkTheme), themeButton.classList["uil-moon" === selectedIcon ? "add" : "remove"]("uil-sun"));
+
+
+themeButton.addEventListener("click", (() => {
+    document.body.classList.toggle(darkTheme);
+    themeButton.classList.toggle("uil-sun");
+    localStorage.setItem("selected-theme", document.body.classList.contains(darkTheme) ? "dark" : "light");
+    localStorage.setItem("selected-icon", themeButton.classList.contains("uil-sun") ? "uil-moon" : "uil-sun");
+}));
+
+
 var form = document.getElementById("my-form");
 async function handleSubmit(e) {
     e.preventDefault();
     var t = document.getElementById("contact__status"),
         n = new FormData(e.target);
-    fetch(e.target.action, { method: form.method, body: n, headers: { Accept: "application/json" } }).then((e => { e.ok ? (t.classList.add("success"), t.innerHTML = "Thanks for your submission !", form.reset()) : e.json().then((e => { Object.hasOwn(e, "errors") ? (t.classList.add("error"), t.innerHTML = e.errors.map((e => e.message)).join(", ")) : (t.classList.add("error"), t.innerHTML = "Oops! Something went wrong") })) })).catch((e => { t.innerHTML = "Oops! There was a problem submitting your form" }))
+    fetch(e.target.action, {
+        method: form.method,
+        body: n,
+        headers: { Accept: "application/json" }
+    }).then((e => {
+        e.ok ? (t.classList.add("success"), t.innerHTML = "Thanks for your submission !", form.reset()) :
+            e.json().then((e => {
+                Object.hasOwn(e, "errors") ? (t.classList.add("error"), t.innerHTML = e.errors.map((e => e.message)).join(", ")) :
+                    (t.classList.add("error"), t.innerHTML = "Oops! Something went wrong")
+            }))
+    })).catch((e => { t.innerHTML = "Oops! There was a problem submitting your form" }))
 }
+
 form.addEventListener("submit", handleSubmit);
 const sr_right = ScrollReveal({ origin: "right", distance: "50px", duration: 2500 });
 sr_right.reveal(".home__img", { distance: "120px" }), sr_right.reveal(".home__data");
@@ -64,8 +86,8 @@ const sr_left = ScrollReveal({ origin: "left", distance: "50px", duration: 2500 
 sr_left.reveal(".home__social");
 const sr_bottom = ScrollReveal({ origin: "bottom", distance: "50px", duration: 2500 });
 sr_bottom.reveal(".home__scroll"), ScrollReveal().reveal(".section__title", { duration: 2e3, delay: 300 }), ScrollReveal().reveal(".section__subtitle", { duration: 2500, delay: 400 }), ScrollReveal().reveal(".about__container", { duration: 2e3, delay: 400 }), ScrollReveal().reveal(".skills__container", { duration: 2e3, delay: 50 }), ScrollReveal().reveal(".qualification__container", { duration: 2e3, delay: 50 }), ScrollReveal().reveal(".certification__container", { duration: 2e3, delay: 50 }), ScrollReveal().reveal(".projects__container", { duration: 2e3, delay: 50 }), ScrollReveal().reveal(".blog__container", { duration: 2e3, delay: 50 }), ScrollReveal().reveal(".contact__container", { duration: 2e3, delay: 50 });
-const typed_home = new Typed("#multiple-text", { strings: ["Full Stack Developer", "UI / UX Designer", "White Hat Jr", "Data Analyst"], typeSpeed: 100, backSpeed: 30, backDelay: 1e3, loop: !0 }),
-    typed_footer = new Typed("#multiple-text-footer", { strings: ["Full Stack Developer", "UI / UX Designer", "White Hat Jr", "Data Analyst"], typeSpeed: 100, backSpeed: 30, backDelay: 1e3, loop: !0 });
+const typed_home = new Typed("#multiple-text", { strings: ["Full Stack Developer", "Counsellor @VTG", "Designer @iTMG", "Data Analyst"], typeSpeed: 100, backSpeed: 30, backDelay: 1e3, loop: !0 }),
+    typed_footer = new Typed("#multiple-text-footer", { strings: ["Full Stack Developer", "Counsellor @VTG", "Designer @iTMG", "Data Analyst"], typeSpeed: 100, backSpeed: 30, backDelay: 1e3, loop: !0 });
 
 
 window.addEventListener('load', () => {
@@ -183,14 +205,7 @@ var testimonialsSwiper = new Swiper('.testimonials__container', {
     },
 });
 document.addEventListener("DOMContentLoaded", function() {
-    let isShown = false;
-
-    setTimeout(function() {
-        if (!isShown) {
-            document.getElementById('newsletterPopup').style.display = 'block';
-            isShown = true;
-        }
-    }, 10000); 
+    document.getElementById('newsletterPopup').style.display = 'block';
 
     document.addEventListener('click', function(event) {
         if (event.target.matches('.popup-close')) {
@@ -198,3 +213,17 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+
+function showPopup() {
+    if (!localStorage.getItem('popupShown')) {
+        document.getElementById('newsletterPopup').style.display = 'block';
+        localStorage.setItem('popupShown', 'yes');
+    }
+}
+
+function closeNewsletterPopup() {
+    document.getElementById('newsletterPopup').style.display = 'none';
+}
+
+// Initially show popup
+showPopup();
